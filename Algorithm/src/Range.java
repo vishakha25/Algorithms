@@ -108,7 +108,6 @@ public class Range {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int[] a= {4, 5, 6, 7, 8, 9, 12, 15, 16, 17, 18, 20, 22, 23, 24, 27};
 		ArrayList<Range> a1=getRange(a);
 		printArrayList(a1);		
