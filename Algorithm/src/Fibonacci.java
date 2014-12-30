@@ -3,7 +3,6 @@ public class Fibonacci {
 	public int simpleFib(int n){
 		if(n<2)
 			return n;
-		
 		return simpleFib(n-1) + simpleFib(n-2);
 	}
 	public int fib(int n){
@@ -89,7 +88,6 @@ public class Fibonacci {
 		}
 		System.out.println();
 	}
-	
 	
 	public static void main(String[] args) {
 
