@@ -305,20 +305,20 @@ public class StringAlgorithms {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		StringAlgorithms sa1=new StringAlgorithms();
-		//System.out.println(sa1.compress("aaaabbbfyeaeyeyyyyyyyyrrrrrr"));
-		//System.out.println(sa1.unique("hedabcfgw"));
-		//System.out.println(sa1.uniqueBits("hedabbcfgw"));
-		//System.out.println(sa1.toUpperCase("aBcDefGhIjKlmnopQrstUvWXyZ"));
-		//System.out.println(sa1.toLowerCase("aBcDefGhIjKlmnopQrstUvWXyZ"));
-		//System.out.println(sa1.wordsReverse("My name is Vishakha Gupta"));
-		//System.out.println(sa1.sentenceReverse("My name is Vishakha Gupta"));
-		//System.out.println(sa1.inPlaceReplace("My name is Vishakha Gupta", 'a', "%love%"));
-		//System.out.println(sa1.replace("My name is Vishakha Gupta", 'a', "%love%"));
-		//System.out.println(sa1.initials("My name is Vishakha Gupta"));
-		//System.out.println(sa1.bigInt(987654321));
-		//System.out.println(sa1.isSubString("My name is Vishakha Gupta","GGames"));
-		//System.out.println(sa1.isAnagram("hello", "Holel"));
-		//System.out.println(sa1.len("aBXyZ"));
+		System.out.println(sa1.compress("aaaabbbfyeaeyeyyyyyyyyrrrrrr"));
+		System.out.println(sa1.unique("hedabcfgw"));
+		System.out.println(sa1.uniqueBits("hedabbcfgw"));
+		System.out.println(sa1.toUpperCase("aBcDefGhIjKlmnopQrstUvWXyZ"));
+		System.out.println(sa1.toLowerCase("aBcDefGhIjKlmnopQrstUvWXyZ"));
+		System.out.println(sa1.wordsReverse("My name is Vishakha Gupta"));
+		System.out.println(sa1.sentenceReverse("My name is Vishakha Gupta"));
+		System.out.println(sa1.inPlaceReplace("My name is Vishakha Gupta", 'a', "%love%"));
+		System.out.println(sa1.replace("My name is Vishakha Gupta", 'a', "%love%"));
+		System.out.println(sa1.initials("My name is Vishakha Gupta"));
+		System.out.println(sa1.bigInt(987654321));
+		System.out.println(sa1.isSubString("My name is Vishakha Gupta","GGames"));
+		System.out.println(sa1.isAnagram("hello", "Holel"));
+		System.out.println(sa1.len("aBXyZ"));
 		System.out.println(sa1.removeVowels("My name is Vishakha Gupta"));
 	}
 
