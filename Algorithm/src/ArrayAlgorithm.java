@@ -215,20 +215,28 @@ public class ArrayAlgorithm {
 	
 	public static void main(String[] args) {
 		ArrayAlgorithm aa1= new ArrayAlgorithm();
-		int[] a1={1,2,2,2,2,2,2,2,4,4,5,6};
-		int[] b1={12,5,3,6,8,15,11,7,2,4};
-		int[] c1={1,2,3,4,5,6,7,8,9,10,11,12};
-		int[] d1={6,5,2,6,4,5,2,3,7,8,3};
-		System.out.println(aa1.majority(a1));
-		System.out.println(aa1.countOccurences(a1, 4));
-		System.out.println(aa1.bigInt(3512345));
-		System.out.println(aa1.median(b1));
+		int[] a1={1,2,3,4,2};
+		int[] b1={8,6,4,1};
+		int[] c1={1,7,6,5,4,3,2};
+		int[] d1={9,8,7,6,20};
+		//System.out.println(aa1.majority(a1));
+		//System.out.println(aa1.countOccurences(a1, 4));
+		//System.out.println(aa1.bigInt(3512345));
+		//System.out.println(aa1.median(b1));
 		
-		printIntArray(aa1.findSingles(d1));
+		//printIntArray(aa1.findSingles(d1));
 		System.out.println();
-		printIntArray(aa1.findDuplicates(d1));
-		aa1.findSum(b1, 12);
-		aa1.findSumSorted(c1, 8);
+	//	printIntArray(aa1.findDuplicates(d1));
+		//aa1.findSum(b1, 12);
+		//aa1.findSumSorted(c1, 8);
+		System.out.println(aa1.arrayType(a1));
+		System.out.println(aa1.arrayType(b1));
+		System.out.println(aa1.arrayType(c1));
+		System.out.println(aa1.arrayType(d1));
+		System.out.println(aa1.arrayTypeFast(a1));
+		System.out.println(aa1.arrayTypeFast(b1));
+		System.out.println(aa1.arrayTypeFast(c1));
+		System.out.println(aa1.arrayTypeFast(d1));
 		
 	}
 	
@@ -272,6 +280,57 @@ public class ArrayAlgorithm {
 		}
 		return result;
 	
+	}
+	
+	public String arrayType(int[] a){
+		
+	    String type="";
+	    for(int i=0;i<a.length-1; i++){
+	    //System.out.println(a[i]);
+	     if(a[i]>a[i+1]){
+	
+	         if(type==""){
+	             type="D";
+	            }
+	         else if( type=="I"){
+	           //if already type set to Increasing, set to I-D and exit
+	           type=type+"- D";
+	           break;
+	          }
+	     }
+	     else{
+	         if(type==""){
+	             type="I";
+	            }
+	           else if( type=="D"){
+	           //if already type set to Increasing, set to I-D and exit
+	           type=type+"- I";
+	           break;
+	           }
+	     	}
+	    }
+	    return type;
+	}
+	
+	public String arrayTypeFast(int[] a){
+		if(a.length<2) return "Invalid Array";
+		int n=a.length-1;
+		if(a[0]>a[1]){
+			if(a[n-1]>a[n]){
+				return "Decreasing";
+			}
+			else{
+				return "Decrease-Increase";
+			}
+		}
+		else{
+			if(a[n-1]<a[n]){
+				return "Increasing";
+			}
+			else{
+				return "Increase-Decrease";
+			}
+		}
 	}
 	
 	public static void printIntArray(int[] intArray){
