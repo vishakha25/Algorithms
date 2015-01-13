@@ -1,6 +1,5 @@
 import java.util.Arrays;
 
-
 public class MatrixSum {
 	
 	public int sumMatrix(int[][] matrix)
@@ -75,7 +74,7 @@ public class MatrixSum {
 	public void spiralPrint(int[][] a){
 	    int i, rowStart = 0, colStart = 0;
 	    int rowEnd=a.length ,colEnd= a[0].length;
-	 
+	    System.out.print("Row End "+ rowEnd+ "  Col End  "+ colEnd);
 	    while (rowStart < rowEnd && colStart < colEnd)
 	    {
 	        /* Print the first row from the remaining rows */
@@ -117,8 +116,8 @@ public class MatrixSum {
 	
 
 	public void printArray(int[][] matrix){
-		for(int i=0;i<4;i++){
-			for(int j=0;j<5;j++)
+		for(int i=0;i<6;i++){
+			for(int j=0;j<4;j++)
 			{
 				System.out.print(matrix[i][j]+ "   ");
 			}
@@ -130,9 +129,9 @@ public class MatrixSum {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MatrixSum ms1=new MatrixSum();
-		int[][] x=new int[4][4];
+		int[][] x=new int[6][4];
 		int count=1;
-		for(int i=0;i<4;i++){
+		for(int i=0;i<6;i++){
 			for(int j=0;j<4;j++)
 			{
 				x[i][j]=count++;
@@ -143,6 +142,7 @@ public class MatrixSum {
 		//System.out.println(ms1.find(x,18));
 		//System.out.println(ms1.sumMatrix(x));
 		//ms1.printArray(ms1.verticalSum(x));
+		ms1.printArray(x);
 		ms1.spiralPrint(x);
 		//ms1.printArray(x);
 		//ms1.printArray(x1);
