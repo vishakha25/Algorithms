@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 public class ArrayAlgorithm {
-
 	public int majority(int[] intArray){
 		/*Program to find number
 		 * if a number is repeated in the array more than n/2 
@@ -18,14 +17,18 @@ public class ArrayAlgorithm {
 		for(int x:intArray){
 			if(map1.containsKey(x)){
 				if(map1.get(x)>=majoritycount){
+					//if majority count reached, return number
 					return x;
 				}
+				//update count of occurrences of number in hashmap 
 				map1.put(x, map1.get(x)+1);
 			}
 			else{
+				//if key doesn't exist, add key to map
 				map1.put(x, 1);
 			}
 		}
+		//return -1 if no majority element found
 		return -1;
 	}
 	
