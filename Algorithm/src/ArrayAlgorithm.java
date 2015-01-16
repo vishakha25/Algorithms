@@ -32,7 +32,8 @@ public class ArrayAlgorithm {
 		return -1;
 	}
 	
-	public int countOccurences(int[] intArray,int num){
+	public int countOccurrences(int[] intArray,int num){
+		//count occurrences of given num in the intArray(sorted) in O(n) time
 		int index=binarysearch(intArray, num);
 		int mid=index+1;
 		int count=0;
@@ -40,6 +41,7 @@ public class ArrayAlgorithm {
 			throw new IllegalArgumentException("Number not found");
 		}
 		else{
+			//counting occurrences before index returned from binary search
 			while(intArray[index]==num){
 				count++;
 				if(index==0){
@@ -47,6 +49,7 @@ public class ArrayAlgorithm {
 				}
 				index--;
 			}
+			//counting occurrences after index returned from binary search
 			while(intArray[mid]==num){
 				count++;
 				if(mid==intArray.length-1){
@@ -414,27 +417,27 @@ public static void main(String[] args)
 		int[] c1={1,7,6,5,4,3,2};
 		int[] d1={9,8,7,6,20};
 		int[] d2={1,1,1,2,3,3,3,4,4,4,4,5,6,7};
-	//System.out.println(aa1.majority(a1));
-	//System.out.println(aa1.countOccurences(a1, 4));
-	//System.out.println(aa1.bigInt(3512345));
-	//System.out.println(aa1.median(b1));
-	//int[] e1={0,0,5,0,5,2,1,0,4,8,0};
-	//int[] f1={0,0,1,0,1,0,1,1,0,1,0,0,0,0,1,1,1,1,1,1};
-	//printIntArray(aa1.findSingles(d1));
-	//System.out.println();
-//	printIntArray(aa1.findDuplicates(d1));
-	//aa1.findSum(b1, 12);
-	//aa1.findSumSorted(c1, 8);
-	//System.out.println(aa1.arrayType(a1));
-	//System.out.println(aa1.arrayType(b1));
-	//System.out.println(aa1.arrayType(c1));
-	//System.out.println(aa1.arrayType(d1));
-	//System.out.println(aa1.arrayTypeFast(a1));
-	//System.out.println(aa1.arrayTypeFast(b1));
-	//System.out.println(aa1.arrayTypeFast(c1));
-	//System.out.println(aa1.arrayTypeFast(d1));
-	//System.out.println(aa1.longestBitArray(f1));
-	//System.out.println(aa1.longestBitA(f1));
+		System.out.println(aa1.majority(a1));
+		System.out.println(aa1.countOccurences(a1, 4));
+		System.out.println(aa1.bigInt(3512345));
+		System.out.println(aa1.median(b1));
+		int[] e1={0,0,5,0,5,2,1,0,4,8,0};
+		int[] f1={0,0,1,0,1,0,1,1,0,1,0,0,0,0,1,1,1,1,1,1};
+		printIntArray(aa1.findSingles(d1));
+		System.out.println();
+		printIntArray(aa1.findDuplicates(d1));
+		aa1.findSum(b1, 12);
+		aa1.findSumSorted(c1, 8);
+		System.out.println(aa1.arrayType(a1));
+		System.out.println(aa1.arrayType(b1));
+		System.out.println(aa1.arrayType(c1));
+		System.out.println(aa1.arrayType(d1));
+		System.out.println(aa1.arrayTypeFast(a1));
+		System.out.println(aa1.arrayTypeFast(b1));
+		System.out.println(aa1.arrayTypeFast(c1));
+		System.out.println(aa1.arrayTypeFast(d1));
+		System.out.println(aa1.longestBitArray(f1));
+		System.out.println(aa1.longestBitA(f1));
 	System.out.println(aa1.binarysearch(d2, 3));
 	System.out.println(aa1.binarysearchlowestIndex(d2, 3));
 	
