@@ -5,11 +5,15 @@ import java.util.Set;
 public class ArrayAlgorithm {
 
 	public int majority(int[] intArray){
+		/*Program to find number
+		 * if a number is repeated in the array more than n/2 
+		 * times where n is the length of the array
+		 */
 		if(intArray.length<3){
 			throw new IllegalArgumentException("Array too small for majority.");
 		}
-		System.out.println(intArray.length);
 		HashMap<Integer,Integer> map1=new HashMap<>();
+		//checking if num exceeds half the array size to qualify as majority	
 		int majoritycount=intArray.length/2;
 		for(int x:intArray){
 			if(map1.containsKey(x)){
@@ -103,6 +107,34 @@ public class ArrayAlgorithm {
 		return -1;
 				
 	}
+	public int binarysearchlowestIndex(int[] intArray,int num){
+		/*takes integer array and
+		 * returns lowest index of the element to be found-num
+		 * in case of duplicate elements
+		 * else returns -1
+		 */
+		int low=0;
+		int high=intArray.length;
+		int mid;
+		int indexFound=-1;
+		while(low<high){
+			mid=(low+high)/2;
+			if(intArray[mid]==num){
+				indexFound=mid;
+				break;
+			}
+			else if(intArray[mid]>num){
+				high=mid;
+			}
+			else{
+				low=mid;
+			}
+		}
+		while(intArray[indexFound-1]==num){
+			indexFound--;
+		}
+		return indexFound;
+	}
 	
 	public int bigInt(int n){
 		/* Takes a num and returns next big integer formed using numbers in
@@ -194,6 +226,20 @@ public class ArrayAlgorithm {
 		
 	}
 	
+	public int[] moveZerosEnd(int[] a){
+		int nonZeroCount=0;
+		for(int i=0;i<a.length;i++){
+			if(a[i]!=0){
+				a[nonZeroCount++]=a[i];
+			}
+		}
+		while(nonZeroCount<a.length){
+			a[nonZeroCount++]=0;
+		}
+		return a;
+		
+	}
+
 	public int[] findDuplicates(int[] a){
 		HashMap<Integer,Integer> map1=new HashMap<>();
 		ArrayList<Integer> result=new ArrayList<>();
@@ -211,33 +257,6 @@ public class ArrayAlgorithm {
 			r[j++]=x;
 		}
 		return r;
-	}
-	
-	public static void main(String[] args) {
-		ArrayAlgorithm aa1= new ArrayAlgorithm();
-		int[] a1={1,2,3,4,2};
-		int[] b1={8,6,4,1};
-		int[] c1={1,7,6,5,4,3,2};
-		int[] d1={9,8,7,6,20};
-		//System.out.println(aa1.majority(a1));
-		//System.out.println(aa1.countOccurences(a1, 4));
-		//System.out.println(aa1.bigInt(3512345));
-		//System.out.println(aa1.median(b1));
-		
-		//printIntArray(aa1.findSingles(d1));
-		System.out.println();
-	//	printIntArray(aa1.findDuplicates(d1));
-		//aa1.findSum(b1, 12);
-		//aa1.findSumSorted(c1, 8);
-		System.out.println(aa1.arrayType(a1));
-		System.out.println(aa1.arrayType(b1));
-		System.out.println(aa1.arrayType(c1));
-		System.out.println(aa1.arrayType(d1));
-		System.out.println(aa1.arrayTypeFast(a1));
-		System.out.println(aa1.arrayTypeFast(b1));
-		System.out.println(aa1.arrayTypeFast(c1));
-		System.out.println(aa1.arrayTypeFast(d1));
-		
 	}
 	
 	public int[] multiplyArray(int[] a,int[] b){
@@ -281,6 +300,51 @@ public class ArrayAlgorithm {
 		return result;
 	
 	}
+	
+	public int longestBitArray(int[] a){
+		// below function in O(n) space complexity
+		int[] b=new int[a.length];
+		int max=0;
+		int sum=0;
+		for(int i=0;i<a.length;i++){
+			if(a[i]==0){
+				sum-=1;
+				b[i]=sum;
+			}
+			else{
+				sum+=1;
+				b[i]=sum;
+			}
+			if(b[i]==0){
+				max=i;
+			}
+		}
+		//printIntArray(b);
+		if(max==0){
+			System.out.println("No longest Sequence Found");
+			return -1;
+		}
+		return max;
+	}
+	
+	public int longestBitA(int[] a){
+		int sum=0;
+		int maxIndex=0;
+		for(int i=0;i<a.length;i++){
+			if(a[i]==0){
+				sum-=1;
+			}
+			else{
+				sum+=1;
+			}
+			if(sum==0){
+				maxIndex=i;
+			}
+			
+		}
+		return maxIndex;
+	}
+		
 	
 	public String arrayType(int[] a){
 		
@@ -338,4 +402,39 @@ public class ArrayAlgorithm {
 			System.out.print(x+ "  ");
 		}
 	}
+public static void main(String[] args) 
+	{
+		ArrayAlgorithm aa1= new ArrayAlgorithm();
+		
+		int[] a1={1,2,3,4,2};
+		int[] b1={8,6,4,1};
+		int[] c1={1,7,6,5,4,3,2};
+		int[] d1={9,8,7,6,20};
+		int[] d2={1,1,1,2,3,3,3,4,4,4,4,5,6,7};
+	//System.out.println(aa1.majority(a1));
+	//System.out.println(aa1.countOccurences(a1, 4));
+	//System.out.println(aa1.bigInt(3512345));
+	//System.out.println(aa1.median(b1));
+	//int[] e1={0,0,5,0,5,2,1,0,4,8,0};
+	//int[] f1={0,0,1,0,1,0,1,1,0,1,0,0,0,0,1,1,1,1,1,1};
+	//printIntArray(aa1.findSingles(d1));
+	//System.out.println();
+//	printIntArray(aa1.findDuplicates(d1));
+	//aa1.findSum(b1, 12);
+	//aa1.findSumSorted(c1, 8);
+	//System.out.println(aa1.arrayType(a1));
+	//System.out.println(aa1.arrayType(b1));
+	//System.out.println(aa1.arrayType(c1));
+	//System.out.println(aa1.arrayType(d1));
+	//System.out.println(aa1.arrayTypeFast(a1));
+	//System.out.println(aa1.arrayTypeFast(b1));
+	//System.out.println(aa1.arrayTypeFast(c1));
+	//System.out.println(aa1.arrayTypeFast(d1));
+	//System.out.println(aa1.longestBitArray(f1));
+	//System.out.println(aa1.longestBitA(f1));
+	System.out.println(aa1.binarysearch(d2, 3));
+	System.out.println(aa1.binarysearchlowestIndex(d2, 3));
+	
+	//printIntArray(aa1.moveZerosEnd(e1));
+}
 }
