@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Stack;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
@@ -99,7 +100,10 @@ public class ArrayAlgorithm {
 		int high=intArray.length;
 		int mid;
 		while(low<high){
-			mid=(low+high)/2;
+			mid=(low+high)>>2; //instead of divide by 2
+			/*or low+((high-low)>>2))
+			 * 
+			 */
 			if(intArray[mid]==num){
 				return mid;
 			}
@@ -111,13 +115,14 @@ public class ArrayAlgorithm {
 			}
 		}
 		return -1;
-				
 	}
+	
 	public int binarysearchlowestIndex(int[] intArray,int num){
 		/*takes integer array and
 		 * returns lowest index of the element to be found-num
 		 * in case of duplicate elements
 		 * else returns -1
+		 * 
 		 */
 		int low=0;
 		int high=intArray.length;
@@ -144,7 +149,8 @@ public class ArrayAlgorithm {
 	
 	public int bigInt(int n){
 		/* Takes a num and returns next big integer formed using numbers in
-		 * the given int. 
+		 * the given int. For ex: with 4784321, next big integer is not 4874321, its 4812347
+		 * 534976--> 536479
 		 */
 		String s=Integer.toString(n);
 		//System.out.println(s);
@@ -153,8 +159,9 @@ public class ArrayAlgorithm {
 		int swapIntBigIndex=-1, swapIntSmallIndex=-1;
 		int i=a.length-1;
 			while(i>0){
+				//if a[i] is greater than a[i-1] means we need to swap 
 				if(a[i]>a[i-1]){
-					//System.out.println(i);
+					System.out.println(i);
 					swapIntSmallIndex=i-1;
 					swapIntBigIndex=i;
 					break;
@@ -167,13 +174,12 @@ public class ArrayAlgorithm {
 						System.exit(0);
 					}
 				}
-				
 			}
 			
-			//System.out.println("big"+ swapIntBigIndex+ "Small"+ swapIntSmallIndex);
-			
-			for(int j=i;j<a.length-1;j++){
+			System.out.println("big "+ swapIntBigIndex+ "Small "+ swapIntSmallIndex);
+			for(int j=i;j<a.length;j++){
 				if(a[j]>a[swapIntSmallIndex] && a[j]<a[swapIntBigIndex]){
+					System.out.println("J: "+ j);
 					swapIntBigIndex=j;
 				}
 			}
@@ -351,6 +357,33 @@ public class ArrayAlgorithm {
 		return maxIndex;
 	}
 		
+	public void nextGreaterNumber(int[] a){
+		int[] result=new int[a.length];
+		Stack<Integer> s1=new Stack<>();
+		int j=0;
+		int i=0;
+		s1.push(a[i++]);
+		for(;i<a.length;i++){
+			if(s1.peek()<a[i]){
+				result[j]=a[i];
+				s1.pop();
+				while(!s1.isEmpty()){
+					if(s1.peek()<a[i]){
+						a[--j]=a[i];
+					}
+				
+				s1.push(a[i]);
+				
+				
+				j=i;
+			}
+			else{
+				s1.push(a[i]);
+				}
+			}
+			
+		}
+	}
 	
 	public String arrayType(int[] a){
 		
@@ -418,8 +451,8 @@ public static void main(String[] args)
 		int[] d1={9,8,7,6,20};
 		int[] d2={1,1,1,2,3,3,3,4,4,4,4,5,6,7};
 		System.out.println(aa1.majority(a1));
-		System.out.println(aa1.countOccurences(a1, 4));
-		System.out.println(aa1.bigInt(3512345));
+		//System.out.println(aa1.countOccurrences(a1, 4));
+		System.out.println(aa1.bigInt(4784321));
 		System.out.println(aa1.median(b1));
 		int[] e1={0,0,5,0,5,2,1,0,4,8,0};
 		int[] f1={0,0,1,0,1,0,1,1,0,1,0,0,0,0,1,1,1,1,1,1};
