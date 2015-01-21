@@ -357,6 +357,9 @@ public class ArrayAlgorithm {
 		return maxIndex;
 	}
 		
+	/*
+	 * below algorithm is in progress.
+	 */
 	public void nextGreaterNumber(int[] a){
 		int[] result=new int[a.length];
 		Stack<Integer> s1=new Stack<>();
@@ -364,7 +367,8 @@ public class ArrayAlgorithm {
 		int i=0;
 		s1.push(a[i++]);
 		for(;i<a.length;i++){
-			if(s1.peek()<a[i]){
+			if(s1.peek()<a[i])
+			{
 				result[j]=a[i];
 				s1.pop();
 				while(!s1.isEmpty()){
@@ -373,15 +377,12 @@ public class ArrayAlgorithm {
 					}
 				
 				s1.push(a[i]);
-				
-				
 				j=i;
-			}
-			else{
-				s1.push(a[i]);
 				}
 			}
-			
+			else {
+				s1.push(a[i]);
+				}
 		}
 	}
 	
