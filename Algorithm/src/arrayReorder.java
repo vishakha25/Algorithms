@@ -13,12 +13,10 @@ public class arrayReorder {
 	public static int[] alternate(int[] a){
 		Stack<Integer> s1=new Stack<>();
 		int mid=a.length>>1;
-		System.out.println(a.length + "  "+ mid);
 		for(int i=mid-1;i>=0;i--){
 			s1.push(a[i]);
 		}
 		for(int i=0;mid<a.length;){
-			System.out.println("I: "+ i + "   Mid: "+mid);
 			a[i++]=s1.pop();
 			a[i++]=a[mid++];
 		}
